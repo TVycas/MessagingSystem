@@ -1,4 +1,4 @@
-
+package server;
 // Each nickname has a different incomming-message queue.
 
 import java.util.concurrent.*;

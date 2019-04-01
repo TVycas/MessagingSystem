@@ -1,3 +1,8 @@
+package client;
+
+import util.Report;
+import util.Strings;
+
 import java.io.*;
 
 public class ClientSender extends Thread {
@@ -22,18 +27,18 @@ public class ClientSender extends Thread {
 			while (true) {
 				// The command to send to the server
 				command = user.readLine();
-				// Check if ClientReceiver changed the value and if so stop the thread by
+				// Check if client.ClientReceiver changed the value and if so stop the thread by
 				// breaking the while loop
 				if (breakTheLoop)
 					break;
 
-				// based on command wait for more information and send it over to ServerReceiver
+				// based on command wait for more information and send it over to server.ServerReceiver
 				if (command.equals(Strings.send)) {
 					if(showHelp) {
 						Report.behaviour(
 								"Usage:\n" +
 								"Recipient\n" +
-								"Message\n" +
+								"server.Message\n" +
 								"(To toggle help messages write \"help\")");
 					}
 					String recipient = user.readLine();
@@ -45,7 +50,7 @@ public class ClientSender extends Thread {
 					if(showHelp) {
 						Report.behaviour(
 								"Usage:\n" +
-								"Group name\n" +
+								"server.Group name\n" +
 								"Member names in one line");
 					}
 					String groupName = user.readLine();
@@ -58,8 +63,8 @@ public class ClientSender extends Thread {
 					if(showHelp) {
 						Report.behaviour(
 								"Usage:\n" +
-								"Group name\n" +
-								"Message");
+								"server.Group name\n" +
+								"server.Message");
 					}
 					String recipient = user.readLine();
 					String text = user.readLine();
@@ -71,7 +76,7 @@ public class ClientSender extends Thread {
 					if(showHelp) {
 						Report.behaviour(
 								"Usage:\n" +
-								"Group name");
+								"server.Group name");
 					}
 					String groupName = user.readLine();
 					toServer.println(command);
@@ -81,7 +86,7 @@ public class ClientSender extends Thread {
 					if(showHelp) {
 						Report.behaviour(
 								"Usage:\n" +
-								"Group name\n" +
+								"server.Group name\n" +
 								"Member to add");
 					}
 					String groupName = user.readLine();
@@ -108,7 +113,7 @@ public class ClientSender extends Thread {
 				}
 			}
 		} catch (IOException e) {
-			Report.errorAndGiveUp("Communication broke in ClientSender" + e.getMessage());
+			Report.errorAndGiveUp("Communication broke in client.ClientSender" + e.getMessage());
 		}
 	}
 }

@@ -1,11 +1,15 @@
-
+package client;
 // Usage:
-//        java Client user-nickname server-hostname
+//        java client.Client user-nickname server-hostname
 //
 // After initializing and opening appropriate sockets, we start two
 // client threads, one to send messages, and another one to get
 // messages.
 
+
+import util.Port;
+import util.Report;
+import util.Strings;
 
 import java.io.*;
 import java.net.*;
@@ -21,7 +25,7 @@ class Client {
 
 		// Check correct usage:
 		if (args.length != 1) {
-			Report.errorAndGiveUp("Usage: java Client server-hostname");
+			Report.errorAndGiveUp("Usage: java client.Client server-hostname");
 		}
 
 		// Initialize information:
@@ -64,7 +68,7 @@ class Client {
 
 	}
 
-	// Speaks with ClientInit thread to register and login the user
+	// Speaks with client.ClientInit thread to register and login the user
 	private static void membInit() {
 		String userCommand = "";
 		boolean logedIn = false;
@@ -90,7 +94,7 @@ class Client {
 				toServer.println("register");
 				toServer.println(username);
 
-				// Based on the answer from the ClientInit, send the correct response
+				// Based on the answer from the client.ClientInit, send the correct response
 				try {
 					if (fromServer.readLine().equals("exists")) {
 						Report.error("A client with this username already exists.");

@@ -1,3 +1,8 @@
+package server;
+
+import util.Report;
+import util.Strings;
+
 import java.io.*;
 
 // Continuously reads from message queue for a particular client,
@@ -27,12 +32,12 @@ public class ServerSender extends Thread {
 
 		while (true) {
 			try {
-				msg = clientTable.getQueue(myClientsName).take(); // Matches EEEEE in ServerReceiver
+				msg = clientTable.getQueue(myClientsName).take(); // Matches EEEEE in server.ServerReceiver
 			} catch (InterruptedException e) {
 			}
 
 			// if the message is the server message quit or logout, pass it over to
-			// ClientReceiver and stop this thread
+			// client.ClientReceiver and stop this thread
 			if (msg.getSender().equals(Strings.quit)) {
 				Report.behaviour("Closing " + clientName + " client");
 				clientTable.remove(clientName);
@@ -41,7 +46,7 @@ public class ServerSender extends Thread {
 			}
 
 			if (msg.getSender().equals(Strings.logout)) {
-				Report.behaviour("Client " + clientName + " is logging out");
+				Report.behaviour("client.Client " + clientName + " is logging out");
 				client.println(msg);
 				clientTable.logout(clientName, myClientsName);
 				break;

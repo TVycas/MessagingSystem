@@ -1,3 +1,8 @@
+package server;
+
+import util.Report;
+import util.Strings;
+
 import java.io.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.regex.PatternSyntaxException;
@@ -199,7 +204,7 @@ public class ServerReceiver extends Thread {
 
 					if (recipient != null && text != null && clientTable.exists(recipient)) {
 						msg = new Message(clientsName, text);
-						// sends message and adds it to be stored in UserInfo object
+						// sends message and adds it to be stored in server.UserInfo object
 						clientTable.sendMsg(recipient, msg);
 						clientTable.getUserInfo(recipient).add(msg);
 					} else

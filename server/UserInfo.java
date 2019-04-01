@@ -1,3 +1,7 @@
+package server;
+
+import util.Strings;
+
 import java.util.ArrayList;
 
 public class UserInfo {

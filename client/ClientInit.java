@@ -1,3 +1,10 @@
+package client;
+
+import server.ClientTable;
+import server.ServerReceiver;
+import server.ServerSender;
+import util.Report;
+
 import java.io.BufferedReader;
 
 import java.io.IOException;
@@ -15,7 +22,7 @@ public class ClientInit extends Thread {
 
 
 
-	ClientInit(ClientTable clientTable, BufferedReader fromClient, PrintStream toClient) {
+	public ClientInit(ClientTable clientTable, BufferedReader fromClient, PrintStream toClient) {
 
 		this.clientTable = clientTable;
 
@@ -80,7 +87,7 @@ public class ClientInit extends Thread {
 				if (clientTable.exists(clientName)) {
 
 					Report.behaviour(clientName + " connected");
-			// reports to the Client class that the user has been logged in
+			// reports to the client.Client class that the user has been logged in
 
 					toClient.println("exists");
 					// real name is the name with the index of the login number added to the end of

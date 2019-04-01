@@ -1,7 +1,12 @@
+package client;
+
+import util.Report;
+import util.Strings;
+
 import java.io.*;
 
 // Gets messages from other clients via the server (by the
-// ServerSender thread).
+// server.ServerSender thread).
 
 public class ClientReceiver extends Thread {
 
@@ -17,12 +22,12 @@ public class ClientReceiver extends Thread {
 		// Print to the user whatever we get from the server:
 		try {
 			while (true) {
-				String s = server.readLine(); // Matches FFFFF in ServerSender.java
+				String s = server.readLine(); // Matches FFFFF in server.ServerSender.java
 				if (s == null) {
 					Report.error("the message is null");
 				} else if (s.equals(Strings.quitMsg)) {
 					// if the message is quit message, change the value of breakTheLoop in
-					// ClientSender for it to stop
+					// client.ClientSender for it to stop
 					sender.breakTheLoop = true;
 					Report.behaviour("You have quited! Send any command to exit the program.");
 					break;
@@ -35,7 +40,7 @@ public class ClientReceiver extends Thread {
 
 			}
 		} catch (IOException e) {
-			Report.errorAndGiveUp("Server seems to have died " + e.getMessage());
+			Report.errorAndGiveUp("server.Server seems to have died " + e.getMessage());
 		}
 	}
 }
