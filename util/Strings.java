@@ -30,21 +30,26 @@ public class Strings {
             "Recipient\n" +
             "Message\n" +
             Strings.toggleHelp;
-    public static final String createGroupHelp=                             "Usage:\n" +
+    public static final String createGroupHelp=
+            "Usage:\n" +
             "Group name\n" +
             "Member names in one line\n" +
             Strings.toggleHelp;
 
-    public static final String groupHelp =                                 "Usage:\n" +
+    public static final String groupHelp =
+            "Usage:\n" +
             "Group name\n" +
             "Message" +
             Strings.toggleHelp;
-    public static final String exitGroupHelp =                              "Usage:\n" +
+    public static final String exitGroupHelp =
+            "Usage:\n" +
             "Group name" +
             Strings.toggleHelp;
-    public static final String addGroupMembHelp =                           "Usage:\n" +
+    public static final String addGroupMembHelp =
+            "Usage:\n" +
             "Group name\n" +
             "Member to add" +
             Strings.toggleHelp;
 
+    public static final String msgSent = "Message sent!";
 }

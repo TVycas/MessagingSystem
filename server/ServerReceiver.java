@@ -31,7 +31,7 @@ public class ServerReceiver extends Thread {
                 // read the command and based on it control the server response
                 String command = myClient.readLine();
                 if (command.equals(Strings.quit) && clientTable.getUserInfo(clientsName).getNumbOfActiveLogins() == 1) {
-                    BlockingQueue<Message> recipientsQueue = clientTable.getQueue(myClientsName);
+                    BlockingQueue<Message> recipientsQueue;
                     msg = new Message(Strings.quit, Strings.quit);
                     recipientsQueue = clientTable.getQueue(myClientsName);
                     recipientsQueue.offer(msg);
@@ -114,7 +114,7 @@ public class ServerReceiver extends Thread {
 
                         for (int i = 0; i < recipientsNames.length; i++) {
                             msg = new Message(groupName, clientsName, text);
-                            // if there is no member with that name but in the server but there is in the
+                            // if there is no member with that name but in the server there is in the
                             // group (user used exit command) then remove the user form the group
                             if (!clientTable.exists(recipientsNames[i]))
                                 group.removeGroupMember(recipientsNames[i]);
@@ -133,7 +133,7 @@ public class ServerReceiver extends Thread {
                 if (command.equals(Strings.addGroupMem)) {
                     String groupName = myClient.readLine();
                     String member = myClient.readLine();
-                    String[] recipientsNames = null;
+                    String[] recipientsNames;
                     Group group = clientTable.getGroup(groupName);
 
                     if (group == null) {
@@ -207,6 +207,10 @@ public class ServerReceiver extends Thread {
                         msg = new Message(clientsName, text);
                         // sends message and adds it to be stored in server.UserInfo object
                         clientTable.sendMsg(recipient, msg);
+                        //Send a confirmation message to the sender
+                        msg = new Message(Strings.msgSent);
+                        clientTable.sendMsg(clientsName, msg);
+                        //Add the message to the message table
                         clientTable.getUserInfo(recipient).add(msg);
                     } else
                         // No point in closing socket. Just give up.
