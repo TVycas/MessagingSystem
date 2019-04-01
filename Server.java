@@ -27,13 +27,13 @@ public class Server {
 			// We loop for ever, as servers usually do.
 			while (true) {
 				// Listen to the socket, accepting connections from new clients:
-				Socket socket = serverSocket.accept(); // Matches AAAAA in Client
+				Socket socket = serverSocket.accept();
 
 				// This is so that we can use readLine():
 				BufferedReader fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				PrintStream toClient = new PrintStream(socket.getOutputStream());
 
-				// Start to user initialisation process (registering and loggin in) by starting
+				// Start to user initialisation process (registering and logging in) by starting
 				// UserInit thread
 				ClientInit clientInit = new ClientInit(clientTable, fromClient, toClient);
 				clientInit.start();

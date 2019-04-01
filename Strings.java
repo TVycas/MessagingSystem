@@ -18,10 +18,10 @@ public class Strings {
 	public static final String personAlreadyInGroup = "is already in the group";	
 	public static final String addGroupMem = "add group member";
 	public static final String group = "group";
-	public static final String newGroup = "You've been added to a group called ";
+	public static final String newGroup = "You've been added to a group called \"%s\" (type \"exit group\" to exit this group)";
 	public static final String createGroup = "create group";
 	public static final String exitGroup = "exit group";
-	public static final String groupExited = "You have been removed from the group.";
+	public static final String groupExited = "You have been removed from this group.";
 	public static final String pleaseLogout = "To quit form your account, please first logout in any other computers";
-
+	public static final String help = "help";
 }

@@ -82,7 +82,7 @@ public class ServerReceiver extends Thread {
 							// if the user is not the client send him or her a message that he or she has
 							// been added to a new group
 							if (!names[i].equals(clientsName)) {
-								msg = new Message(Strings.newGroup + groupName);
+								msg = new Message(String.format(Strings.newGroup, groupName));
 
 								clientTable.sendMsg(names[i], msg);
 
@@ -143,7 +143,7 @@ public class ServerReceiver extends Thread {
 					}
 					if (clientTable.exists(member)) {
 						recipientsNames = group.getRecipientsNames();
-						msg = new Message(groupName, Strings.newGroup + groupName);
+						msg = new Message(groupName, String.format(Strings.newGroup, groupName));
 						clientTable.sendMsg(member, msg);
 
 						msg = new Message(groupName, member + Strings.personAddedToGroup + groupName);

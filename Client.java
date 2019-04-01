@@ -30,7 +30,7 @@ class Client {
 		// Open sockets:
 
 		try {
-			server = new Socket(hostname, Port.number); // Matches AAAAA in Server.java
+			server = new Socket(hostname, Port.number);
 			toServer = new PrintStream(server.getOutputStream());
 			fromServer = new BufferedReader(new InputStreamReader(server.getInputStream()));
 		} catch (UnknownHostException e) {
@@ -43,7 +43,7 @@ class Client {
 		membInit();
 
 		// Create two client threads of a different nature:
-		ClientSender sender = new ClientSender(username, toServer, fromServer);
+		ClientSender sender = new ClientSender(toServer, fromServer);
 		ClientReceiver receiver = new ClientReceiver(fromServer, sender);
 
 		// Run them in parallel:
@@ -114,7 +114,14 @@ class Client {
 					if (fromServer.readLine().equals("exists")) {
 						logedIn = true;
 						Report.behaviour("You have successfully logged in.");
-						Report.behaviour("");
+						Report.behaviour("Usage of the program:\n" +
+								"send - send a message to any registered user\n" +
+								"create group - create a group-chat with other users\n" +
+								"delete - delete the current message\n" +
+								"previous - see previous message\n" +
+								"next - see next message\n" +
+								"quit - exit the program and remove user data\n" +
+								"logout - logout of the account and exit the program");
 					} else {
 						Report.behaviour("There is no client with this name. Have you registered?");
 						username = "";
