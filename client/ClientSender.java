@@ -38,11 +38,7 @@ public class ClientSender extends Thread {
                 // based on command wait for more information and send it over to server.ServerReceiver
                 if (command.equals(Strings.send)) {
                     if (showHelp) {
-                        Report.behaviour(
-                                "Usage:\n" +
-                                        "Recipient\n" +
-                                        "server.Message\n" +
-                                        "(To toggle help messages write \"help\")");
+                        Report.behaviour(Strings.sendHelp);
                     }
                     String recipient = user.readLine();
                     String text = user.readLine();
@@ -51,10 +47,7 @@ public class ClientSender extends Thread {
                     toServer.println(text);
                 } else if (command.equals(Strings.createGroup)) {
                     if (showHelp) {
-                        Report.behaviour(
-                                "Usage:\n" +
-                                        "server.Group name\n" +
-                                        "Member names in one line");
+                        Report.behaviour(Strings.createGroupHelp);
                     }
                     String groupName = user.readLine();
                     String recipientsNames = user.readLine();
@@ -64,10 +57,7 @@ public class ClientSender extends Thread {
 
                 } else if (command.equals(Strings.group)) {
                     if (showHelp) {
-                        Report.behaviour(
-                                "Usage:\n" +
-                                        "server.Group name\n" +
-                                        "server.Message");
+                        Report.behaviour(Strings.groupHelp);
                     }
                     String recipient = user.readLine();
                     String text = user.readLine();
@@ -77,9 +67,7 @@ public class ClientSender extends Thread {
 
                 } else if (command.equals(Strings.exitGroup)) {
                     if (showHelp) {
-                        Report.behaviour(
-                                "Usage:\n" +
-                                        "server.Group name");
+                        Report.behaviour(Strings.exitGroupHelp);
                     }
                     String groupName = user.readLine();
                     toServer.println(command);
@@ -87,10 +75,7 @@ public class ClientSender extends Thread {
 
                 } else if (command.equals(Strings.addGroupMem)) {
                     if (showHelp) {
-                        Report.behaviour(
-                                "Usage:\n" +
-                                        "server.Group name\n" +
-                                        "Member to add");
+                        Report.behaviour(Strings.addGroupMembHelp);
                     }
                     String groupName = user.readLine();
                     String member = user.readLine();
