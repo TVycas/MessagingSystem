@@ -3,5 +3,5 @@ package util;// This is so that server and client can use the same port without
 // decide/need to use another port.
 
 public class Port {
-  public static final int number = 4444;
+    public static final int number = 4444;
 }
