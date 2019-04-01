@@ -4,7 +4,7 @@ A messaging system that uses a sever to communicate between users.
 
 Uses Java Sockets, ConcurrentMaps, Threads.
 
-####Functionality:
+#### Functionality:
 * Send messages between users
 * Create group chats
 * Store messages for every user
